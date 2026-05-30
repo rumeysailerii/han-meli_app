@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hanımeli — Kadın Girişimci Platformu</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,300;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0c0508}
+.hero{background:#0c0508;min-height:100vh;width:100%;position:relative;overflow:hidden;display:flex;flex-direction:column;font-family:'DM Sans',sans-serif}
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(220,100,140,.12);animation:expand var(--re,8s) ease-in-out infinite var(--rd,0s)}
+@keyframes expand{0%,100%{transform:scale(1);opacity:.4}50%{transform:scale(1.08);opacity:.15}}
+
+/* NAV */
+.nav{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:22px 40px}
+.logo{font-family:'Fraunces',serif;font-size:26px;font-weight:700;color:#fff;letter-spacing:-0.3px;text-decoration:none}
+.logo span{color:#f0829e;font-style:italic}
+.nav-links{display:flex;gap:32px}
+.nav-link{font-size:13px;color:rgba(255,255,255,.38);cursor:pointer;letter-spacing:.04em;transition:color .2s;text-decoration:none}
+.nav-link:hover{color:rgba(255,255,255,.8)}
+.nav-btn{font-size:13px;font-weight:500;color:#f0829e;background:rgba(240,130,158,.1);border:1px solid rgba(240,130,158,.25);padding:9px 22px;border-radius:50px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.nav-btn:hover{background:rgba(240,130,158,.2)}
+
+/* BODY */
+.hero-body{position:relative;z-index:5;flex:1;display:flex;align-items:center;justify-content:center;padding:20px 40px 40px;gap:0}
+
+/* ORBIT */
+.orbit-wrap{position:relative;width:320px;height:320px;flex-shrink:0}
+.center-bloom{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,#9b2d5a 0%,#6a1a3a 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 0 50px rgba(155,45,90,.6);font-size:34px}
+.orbit{position:absolute;top:50%;left:50%;border-radius:50%;border:1px dashed rgba(240,130,158,.15)}
+.o1{width:170px;height:170px;margin:-85px 0 0 -85px;animation:rotate 12s linear infinite}
+.o2{width:260px;height:260px;margin:-130px 0 0 -130px;animation:rotate 20s linear infinite reverse}
+@keyframes rotate{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.orbit-dot{position:absolute;top:0;left:50%;transform:translateX(-50%) translateY(-50%);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);animation:counter-rotate var(--cr,12s) linear infinite}
+@keyframes counter-rotate{from{transform:translateX(-50%) translateY(-50%) rotate(0)}to{transform:translateX(-50%) translateY(-50%) rotate(-360deg)}}
+.o1 .orbit-dot{--cr:12s}
+.o2 .orbit-dot{--cr:20s}
+.od2{top:auto;bottom:0;transform:translateX(-50%) translateY(50%)}
+.od3{top:50%;left:0;transform:translateX(-50%) translateY(-50%)}
+.od4{top:50%;left:auto;right:0;transform:translateX(50%) translateY(-50%)}
+
+/* TEXT */
+.hero-text{flex:1;padding-left:56px}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(240,130,158,.08);border:1px solid rgba(240,130,158,.2);border-radius:50px;padding:7px 18px;margin-bottom:28px}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:#f0829e;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.badge-txt{font-size:11px;color:#f0829e;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+
+.headline{font-family:'Fraunces',serif;font-size:52px;font-weight:700;color:#fff;line-height:1.1;letter-spacing:-1px;margin-bottom:6px}
+.headline em{color:#f0829e;font-style:italic;font-weight:300}
+.subheadline{font-family:'Fraunces',serif;font-size:32px;font-weight:600;color:#f0829e;letter-spacing:-0.3px;margin-bottom:22px;line-height:1.2}
+
+.desc{font-size:14px;font-weight:300;color:rgba(255,255,255,.42);line-height:1.9;max-width:360px;margin-bottom:36px}
+
+.btns{display:flex;gap:12px;align-items:center;margin-bottom:36px}
+.btn-main{font-size:14px;font-weight:500;color:#fff;background:#9b2d5a;border:none;padding:14px 32px;border-radius:50px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;letter-spacing:.02em}
+.btn-main:hover{background:#7d2248;transform:translateY(-2px)}
+.btn-ghost{font-size:14px;color:rgba(255,255,255,.5);background:transparent;border:1px solid rgba(255,255,255,.12);padding:14px 26px;border-radius:50px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.btn-ghost:hover{border-color:rgba(255,255,255,.35);color:rgba(255,255,255,.85)}
+
+.users-row{display:flex;align-items:center;gap:14px}
+.avatars{display:flex}
+.av{width:30px;height:30px;border-radius:50%;border:2px solid #0c0508;margin-left:-9px;font-family:'Fraunces',serif;font-size:12px;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.av:first-child{margin-left:0}
+.users-txt{font-size:12px;color:rgba(255,255,255,.35)}
+.users-txt strong{color:rgba(255,255,255,.7);font-weight:500}
+
+/* BOTTOM */
+.hero-bottom{position:relative;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:16px 40px;border-top:1px solid rgba(255,255,255,.05)}
+.tags{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.tag-item{font-size:11px;color:rgba(255,255,255,.25);letter-spacing:.06em}
+.tag-sep{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.15)}
+.credit{font-size:11px;color:rgba(255,255,255,.18);letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 50%,rgba(100,20,50,.4) 0%,transparent 65%)"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 50% 40% at 75% 50%,rgba(60,20,80,.3) 0%,transparent 60%)"></div>
+  <div class="ring" style="width:560px;height:560px;top:50%;left:30%;margin:-280px 0 0 -280px;--re:8s;--rd:0s"></div>
+  <div class="ring" style="width:400px;height:400px;top:50%;left:30%;margin:-200px 0 0 -200px;--re:11s;--rd:2s"></div>
+
+  <nav class="nav">
+    <a class="logo" href="index.html">Han<span>ı</span>meli</a>
+    <div class="nav-links">
+      <a class="nav-link" href="#">Platform</a>
+      <a class="nav-link" href="#">Özellikler</a>
+      <a class="nav-link" href="#">Topluluk</a>
+      <a class="nav-link" href="#">Hakkında</a>
+    </div>
+    <button class="nav-btn" onclick="location.href='index.html'">Giriş Yap</button>
+  </nav>
+
+  <div class="hero-body">
+    <div class="orbit-wrap">
+      <div class="center-bloom">🌸</div>
+      <div class="orbit o1">
+        <div class="orbit-dot" style="background:rgba(155,45,90,.3)">👜</div>
+        <div class="orbit-dot od2" style="background:rgba(127,107,204,.3)">✨</div>
+      </div>
+      <div class="orbit o2">
+        <div class="orbit-dot" style="background:rgba(42,158,130,.3);--cr:20s">🌿</div>
+        <div class="orbit-dot od2" style="background:rgba(186,117,23,.3);--cr:20s">💍</div>
+        <div class="orbit-dot od3" style="background:rgba(155,45,90,.2);--cr:20s">🧵</div>
+        <div class="orbit-dot od4" style="background:rgba(127,107,204,.2);--cr:20s">🫙</div>
+      </div>
+    </div>
+
+    <div class="hero-text">
+      <div class="badge">
+        <div class="badge-dot"></div>
+        <span class="badge-txt">12.000+ kadın girişimci</span>
+      </div>
+
+      <h1 class="headline">
+        Senin işin,<br>
+        senin <em>gücün.</em>
+      </h1>
+      <div class="subheadline">Binlerce kadın seninle.</div>
+
+      <p class="desc">Ürünlerini sat, girişimcilerle tanış, Türkiye'nin her yerinden müşteriye ulaş.</p>
+
+      <div class="btns">
+        <button class="btn-main" onclick="location.href='index.html'">Hemen Katıl</button>
+        <button class="btn-ghost">Nasıl Çalışır?</button>
+      </div>
+
+      <div class="users-row">
+        <div class="avatars">
+          <div class="av" style="background:#9b2d5a">A</div>
+          <div class="av" style="background:#5f4faa">Z</div>
+          <div class="av" style="background:#1e7a63">F</div>
+          <div class="av" style="background:#8a4010">M</div>
+          <div class="av" style="background:#6a2d70">S</div>
+        </div>
+        <span class="users-txt">Bu hafta <strong>248 kişi</strong> katıldı</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-bottom">
+    <div class="tags">
+      <span class="tag-item">El Sanatları</span>
+      <div class="tag-sep"></div>
+      <span class="tag-item">Tekstil</span>
+      <div class="tag-sep"></div>
+      <span class="tag-item">Organik Gıda</span>
+      <div class="tag-sep"></div>
+      <span class="tag-item">Takı & Aksesuar</span>
+      <div class="tag-sep"></div>
+      <span class="tag-item">Kozmetik</span>
+      <div class="tag-sep"></div>
+      <span class="tag-item">Ev Dekor</span>
+    </div>
+    <span class="credit">BIGE Hackathon 2025</span>
+  </div>
+</div>
+</body>
+</html>
