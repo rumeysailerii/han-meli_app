@@ -24,8 +24,7 @@ Kadın dayanışmasını dijital dünyaya taşıyoruz.
 
 ## Demo
 
-👉  [Ana Sayfa (Hero)](https://rumeysailerii.github.io/han-meli_app/hero.html)
-👉 [Uygulama Demosu](https://rumeysailerii.github.io/han-meli_app)
+👉 https://rumeysailerii.github.io/han-meli_app/
 
 ## Teknolojiler
 
