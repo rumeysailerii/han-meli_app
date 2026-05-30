@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hanımeli — Kadın Girişimci Platformu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --pink: #D4537E;
+    --pink-light: #ED93B1;
+    --pink-pale: #FBEAF0;
+    --pink-pale2: #FFF0F4;
+    --purple: #7F77DD;
+    --purple-light: #AFA9EC;
+    --purple-pale: #EEEDFE;
+    --teal: #1D9E75;
+    --teal-light: #5DCAA5;
+    --teal-pale: #E1F5EE;
+    --amber: #BA7517;
+    --amber-pale: #FAEEDA;
+    --gray-bg: #F9F7F6;
+    --gray-border: #E8E5E2;
+    --text-primary: #1A1A1A;
+    --text-secondary: #6B6560;
+    --text-tertiary: #A8A3A0;
+    --white: #FFFFFF;
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--gray-bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+  }
+
+  /* ─── NAV ─── */
+  .site-nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--pink); }
+
+  .nav-tabs {
+    display: flex;
+    gap: 4px;
+  }
+
+  .nav-tab {
+    padding: 7px 16px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+
+  .nav-tab:hover { background: var(--gray-bg); }
+
+  .nav-tab.active {
+    background: var(--pink-pale);
+    color: var(--pink);
+    font-weight: 500;
+  }
+
+  .nav-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .btn { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; font-family: 'DM Sans', sans-serif; border: none; transition: all 0.2s; }
+  .btn-ghost { background: transparent; color: var(--text-secondary); padding: 8px 14px; border-radius: 50px; font-size: 13px; border: 1px solid var(--gray-border); }
+  .btn-ghost:hover { background: var(--gray-bg); }
+  .btn-primary { background: var(--pink); color: white; padding: 9px 18px; border-radius: 50px; font-size: 13px; font-weight: 500; }
+  .btn-primary:hover { background: #C04472; }
+  .btn-outline-pink { background: transparent; color: var(--pink); padding: 9px 18px; border-radius: 50px; font-size: 13px; font-weight: 500; border: 1.5px solid var(--pink-light); }
+  .btn-outline-pink:hover { background: var(--pink-pale); }
+  .btn-outline-purple { background: transparent; color: var(--purple); padding: 9px 18px; border-radius: 50px; font-size: 13px; font-weight: 500; border: 1.5px solid var(--purple-light); }
+  .btn-outline-purple:hover { background: var(--purple-pale); }
+
+  /* ─── SCREENS ─── */
+  .screen { display: none; animation: fadeIn 0.3s ease; }
+  .screen.active { display: block; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ════════════════════════════
+     SCREEN 1 — GİRİŞ / KAYIT
+  ════════════════════════════ */
+  .login-page {
+    min-height: calc(100vh - 60px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .login-hero {
+    background: linear-gradient(145deg, #FFF0F4 0%, #EEEDFE 50%, #E1F5EE 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-decoration {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+  .hd1 { width: 400px; height: 400px; background: #FBEAF0; top: -100px; right: -100px; }
+  .hd2 { width: 250px; height: 250px; background: #EEEDFE; bottom: -50px; left: -50px; }
+  .hd3 { width: 150px; height: 150px; background: #E1F5EE; top: 50%; left: 30%; }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .hero-figures {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 2rem;
+  }
+
+  .figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .fig-head {
+    width: 44px; height: 44px; border-radius: 50%;
+  }
+
+  .fig-body {
+    width: 36px; height: 56px; border-radius: 18px 18px 6px 6px;
+  }
+
+  .figure-1 .fig-head { background: #D4537E; }
+  .figure-1 .fig-body { background: #ED93B1; height: 64px; }
+  .figure-2 .fig-head { background: #7F77DD; }
+  .figure-2 .fig-body { background: #AFA9EC; height: 52px; }
+  .figure-3 .fig-head { background: #1D9E75; }
+  .figure-3 .fig-body { background: #5DCAA5; height: 44px; }
+
+  .connector-line {
+    width: 140px; height: 4px;
+    background: linear-gradient(90deg, #ED93B1, #AFA9EC, #5DCAA5);
+    border-radius: 2px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .hero-headline em { color: var(--pink); font-style: normal; }
+
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .stats-strip {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    justify-content: center;
+  }
+
+  .stat-item { text-align: center; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--pink); }
+  .stat-lbl { font-size: 11px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+
+  .login-form-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+  }
+
+  .form-card {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .tab-switcher {
+    display: flex;
+    background: var(--gray-bg);
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 2rem;
+  }
+
+  .tab-sw-btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 9px;
+    border: none;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .tab-sw-btn.active {
+    background: var(--white);
+    color: var(--pink);
+    font-weight: 500;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+
+  .form-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+
+  .form-subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 1.75rem;
+  }
+
+  .field { margin-bottom: 1rem; }
+
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+
+  .field input, .field select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--gray-border);
+    border-radius: var(--radius-md);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text-primary);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .field input:focus, .field select:focus { border-color: var(--pink-light); }
+  .field input::placeholder { color: var(--text-tertiary); }
+
+  .form-btn-full {
+    width: 100%;
+    padding: 14px;
+    background: var(--pink);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background 0.2s;
+  }
+
+  .form-btn-full:hover { background: #C04472; }
+
+  .or-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 1rem 0;
+    color: var(--text-tertiary);
+    font-size: 12px;
+  }
+
+  .or-divider::before, .or-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gray-border);
+  }
+
+  .social-btns { display: flex; gap: 10px; }
+
+  .social-btn {
+    flex: 1;
+    padding: 11px;
+    border: 1.5px solid var(--gray-border);
+    border-radius: var(--radius-md);
+    background: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+  }
+
+  .social-btn:hover { background: var(--gray-bg); }
+
+  /* ════════════════════════════
+     SCREEN 2 — PROFİL
+  ════════════════════════════ */
+  .profile-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  .profile-banner {
+    height: 180px;
+    background: linear-gradient(135deg, #FBEAF0 0%, #EEEDFE 60%, #E1F5EE 100%);
+    border-radius: var(--radius-xl);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0;
+  }
+
+  .banner-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(#D4537E 1.5px, transparent 1.5px),
+      radial-gradient(#7F77DD 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+    background-position: 0 0, 12px 12px;
+    opacity: 0.15;
+  }
+
+  .profile-card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--gray-border);
+    padding: 0;
+    overflow: hidden;
+    margin-top: -40px;
+    position: relative;
+  }
+
+  .profile-top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 1.5rem 2rem 1.25rem;
+  }
+
+  .profile-avatar-wrap {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.25rem;
+  }
+
+  .profile-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: var(--pink);
+    border: 4px solid var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: white;
+    position: relative;
+    margin-top: -45px;
+    box-shadow: 0 4px 16px rgba(212,83,126,0.25);
+    flex-shrink: 0;
+  }
+
+  .online-dot {
+    position: absolute;
+    bottom: 4px; right: 4px;
+    width: 20px; height: 20px;
+    background: #1D9E75;
+    border-radius: 50%;
+    border: 3px solid var(--white);
+  }
+
+  .profile-info { padding-bottom: 4px; }
+
+  .profile-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  .profile-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    align-items: center;
+  }
+
+  .meta-sep {
+    width: 4px; height: 4px;
+    background: var(--pink-light);
+    border-radius: 50%;
+  }
+
+  .profile-actions { display: flex; gap: 10px; }
+
+  .profile-body {
+    padding: 0 2rem 2rem;
+    border-top: 1px solid var(--gray-border);
+  }
+
+  .tags-row {
+    display: flex;
+    gap: 8px;
+    padding: 1.25rem 0;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    padding: 5px 14px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .tag-pink { background: var(--pink-pale); color: #993556; }
+  .tag-purple { background: var(--purple-pale); color: #3C3489; }
+  .tag-teal { background: var(--teal-pale); color: #0F6E56; }
+  .tag-amber { background: var(--amber-pale); color: #633806; }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 1.75rem;
+  }
+
+  .stat-box {
+    background: var(--gray-bg);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .stat-box-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-box-lbl {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gray-border);
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .product-card {
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--white);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+
+  .product-img {
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+  }
+
+  .product-img-1 { background: linear-gradient(135deg, #FBEAF0, #EEEDFE); }
+  .product-img-2 { background: linear-gradient(135deg, #E1F5EE, #FAEEDA); }
+  .product-img-3 { background: linear-gradient(135deg, #EEEDFE, #E1F5EE); }
+
+  .product-info { padding: 12px; }
+  .product-name { font-size: 13px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px; }
+  .product-price { font-size: 15px; font-weight: 500; color: var(--pink); }
+
+  /* ════════════════════════════
+     SCREEN 3 — ÜRÜN EKLEME
+  ════════════════════════════ */
+  .add-product-page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  .page-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 2rem;
+  }
+
+  .page-back {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1px solid var(--gray-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+  }
+
+  .page-back:hover { background: var(--gray-bg); }
+
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .add-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .form-panel {
+    background: var(--white);
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+  }
+
+  .photo-upload-area {
+    border: 2px dashed var(--pink-light);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    background: var(--pink-pale2);
+    transition: all 0.2s;
+    margin-bottom: 1rem;
+  }
+
+  .photo-upload-area:hover {
+    background: var(--pink-pale);
+    border-color: var(--pink);
+  }
+
+  .upload-icon-circle {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: var(--pink-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+  }
+
+  .upload-icon-circle svg { width: 24px; height: 24px; }
+
+  .upload-main { font-size: 14px; font-weight: 500; color: var(--pink); margin-bottom: 4px; }
+  .upload-sub { font-size: 11px; color: var(--text-tertiary); }
+
+  .thumb-row {
+    display: flex;
+    gap: 8px;
+  }
+
+  .thumb-add {
+    width: 56px; height: 56px;
+    border-radius: 10px;
+    border: 2px dashed var(--gray-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    background: var(--gray-bg);
+  }
+
+  .panel-title {
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-tertiary);
+    margin-bottom: 1.25rem;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .form-field { margin-bottom: 1.1rem; }
+
+  .form-field label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+
+  .form-field input,
+  .form-field textarea,
+  .form-field select {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--gray-border);
+    border-radius: var(--radius-md);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text-primary);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-field input:focus,
+  .form-field textarea:focus,
+  .form-field select:focus {
+    border-color: var(--pink-light);
+  }
+
+  .form-field input::placeholder,
+  .form-field textarea::placeholder {
+    color: var(--text-tertiary);
+  }
+
+  .form-field textarea {
+    resize: vertical;
+    min-height: 90px;
+    line-height: 1.6;
+  }
+
+  .cat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .cat-btn {
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1.5px solid var(--gray-border);
+    background: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+  }
+
+  .cat-btn:hover { border-color: var(--pink-light); color: var(--pink); }
+
+  .cat-btn.selected {
+    border-color: var(--pink);
+    background: var(--pink-pale);
+    color: #993556;
+    font-weight: 500;
+  }
+
+  .cat-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .submit-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--gray-border);
+  }
+
+  .btn-submit {
+    flex: 1;
+    padding: 14px;
+    background: var(--pink);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.2s;
+  }
+
+  .btn-submit:hover { background: #C04472; }
+
+  .btn-draft {
+    padding: 14px 20px;
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1.5px solid var(--gray-border);
+    border-radius: var(--radius-md);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-draft:hover { background: var(--gray-bg); }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .login-page { grid-template-columns: 1fr; }
+    .login-hero { display: none; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .add-form-grid { grid-template-columns: 1fr; }
+    .profile-top { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .profile-avatar-wrap { flex-direction: column; align-items: flex-start; }
+    .nav-tabs { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a class="nav-logo" href="#">Han<span>ı</span>meli</a>
+
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showScreen('login')">Giriş / Kayıt</button>
+    <button class="nav-tab" onclick="showScreen('profile')">Profil</button>
+    <button class="nav-tab" onclick="showScreen('add-product')">Ürün Ekle</button>
+  </div>
+
+  <div class="nav-right">
+    <button class="btn btn-ghost" onclick="showScreen('login')">Giriş Yap</button>
+    <button class="btn btn-primary" onclick="showScreen('login')">Kayıt Ol</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════
+     SCREEN 1 — GİRİŞ / KAYIT
+═══════════════════════════ -->
+<div id="screen-login" class="screen active">
+  <div class="login-page">
+    <!-- Sol: İllüstrasyon -->
+    <div class="login-hero">
+      <div class="hero-decoration hd1"></div>
+      <div class="hero-decoration hd2"></div>
+      <div class="hero-decoration hd3"></div>
+      <div class="hero-content">
+        <div class="hero-figures">
+          <div class="figure figure-3">
+            <div class="fig-head"></div>
+            <div class="fig-body"></div>
+          </div>
+          <div class="figure figure-1">
+            <div class="fig-head"></div>
+            <div class="fig-body"></div>
+          </div>
+          <div class="figure figure-2">
+            <div class="fig-head"></div>
+            <div class="fig-body"></div>
+          </div>
+        </div>
+        <div class="connector-line"></div>
+        <h1 class="hero-headline">Birlikte daha<br><em>güçlüyüz.</em></h1>
+        <p class="hero-sub">Kadın girişimciler için dayanışma, ticaret ve büyüme platformu.</p>
+        <div class="stats-strip">
+          <div class="stat-item">
+            <div class="stat-num">12K+</div>
+            <div class="stat-lbl">Girişimci</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">48K+</div>
+            <div class="stat-lbl">Ürün</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">81 İl</div>
+            <div class="stat-lbl">Türkiye</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sağ: Form -->
+    <div class="login-form-side">
+      <div class="form-card">
+        <div class="tab-switcher">
+          <button class="tab-sw-btn active" id="sw-login" onclick="switchFormTab('login')">Giriş Yap</button>
+          <button class="tab-sw-btn" id="sw-register" onclick="switchFormTab('register')">Kayıt Ol</button>
+        </div>
+
+        <!-- Giriş Formu -->
+        <div id="form-login">
+          <h2 class="form-title">Tekrar hoş geldin 👋</h2>
+          <p class="form-subtitle">Hesabına giriş yap, girişimini büyüt.</p>
+          <div class="field">
+            <label>E-posta</label>
+            <input type="email" placeholder="ornek@email.com">
+          </div>
+          <div class="field">
+            <label>Şifre</label>
+            <input type="password" placeholder="••••••••">
+          </div>
+          <button class="form-btn-full" onclick="showScreen('profile')">Giriş Yap</button>
+          <div class="or-divider">veya</div>
+          <div class="social-btns">
+            <button class="social-btn">Google ile devam et</button>
+            <button class="social-btn">Apple ile devam et</button>
+          </div>
+        </div>
+
+        <!-- Kayıt Formu -->
+        <div id="form-register" style="display:none;">
+          <h2 class="form-title">Topluluğa katıl ✨</h2>
+          <p class="form-subtitle">Ücretsiz hesap oluştur, ürünlerini sat.</p>
+          <div class="field">
+            <label>Ad Soyad</label>
+            <input type="text" placeholder="Ayşe Kaya">
+          </div>
+          <div class="field">
+            <label>E-posta</label>
+            <input type="email" placeholder="ornek@email.com">
+          </div>
+          <div class="field">
+            <label>Şehir</label>
+            <select>
+              <option value="">Şehir seçin...</option>
+              <option>İstanbul</option>
+              <option>Ankara</option>
+              <option>İzmir</option>
+              <option>Samsun</option>
+              <option>Bursa</option>
+              <option>Antalya</option>
+              <option>Diğer</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Ürün Kategorisi</label>
+            <select>
+              <option value="">Kategori seçin...</option>
+              <option>El Sanatları</option>
+              <option>Tekstil & Giyim</option>
+              <option>Gıda & Organik</option>
+              <option>Takı & Aksesuar</option>
+              <option>Kozmetik & Bakım</option>
+              <option>Ev Dekor</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Şifre</label>
+            <input type="password" placeholder="En az 8 karakter">
+          </div>
+          <button class="form-btn-full" onclick="showScreen('profile')">Hesap Oluştur</button>
+          <div class="or-divider">veya</div>
+          <div class="social-btns">
+            <button class="social-btn">Google ile devam et</button>
+            <button class="social-btn">Apple ile devam et</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     SCREEN 2 — PROFİL
+═══════════════════════════ -->
+<div id="screen-profile" class="screen">
+  <div class="profile-page">
+    <div class="profile-banner">
+      <div class="banner-pattern"></div>
+    </div>
+    <div class="profile-card">
+      <div class="profile-top">
+        <div class="profile-avatar-wrap">
+          <div class="profile-avatar">
+            A
+            <div class="online-dot"></div>
+          </div>
+          <div class="profile-info">
+            <div class="profile-name">Ayşe Kaya</div>
+            <div class="profile-meta">
+              <span>📍 İstanbul</span>
+              <div class="meta-sep"></div>
+              <span>3 yıldır üye</span>
+              <div class="meta-sep"></div>
+              <span>⭐ 4.9 puan</span>
+            </div>
+          </div>
+        </div>
+        <div class="profile-actions">
+          <button class="btn btn-outline-purple" onclick="showScreen('add-product')">+ Ürün Ekle</button>
+          <button class="btn btn-primary">Bağlantı Kur</button>
+        </div>
+      </div>
+      <div class="profile-body">
+        <div class="tags-row">
+          <span class="tag tag-pink">El Sanatları</span>
+          <span class="tag tag-purple">Tekstil</span>
+          <span class="tag tag-teal">Organik</span>
+          <span class="tag tag-amber">Takı</span>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-box-num">24</div>
+            <div class="stat-box-lbl">Ürün</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-box-num">148</div>
+            <div class="stat-box-lbl">Bağlantı</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-box-num">312</div>
+            <div class="stat-box-lbl">Satış</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-box-num">4.9</div>
+            <div class="stat-box-lbl">Puan</div>
+          </div>
+        </div>
+        <div class="section-title">Ürünler</div>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-img product-img-1">👜</div>
+            <div class="product-info">
+              <div class="product-name">El yapımı çanta</div>
+              <div class="product-price">₺350</div>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-img product-img-2">🌿</div>
+            <div class="product-info">
+              <div class="product-name">Organik sabun seti</div>
+              <div class="product-price">₺180</div>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-img product-img-3">💍</div>
+            <div class="product-info">
+              <div class="product-name">El işi kolye</div>
+              <div class="product-price">₺220</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     SCREEN 3 — ÜRÜN EKLEME
+═══════════════════════════ -->
+<div id="screen-add-product" class="screen">
+  <div class="add-product-page">
+    <div class="page-header">
+      <div class="page-back" onclick="showScreen('profile')">←</div>
+      <h1 class="page-title">Yeni Ürün Ekle</h1>
+    </div>
+
+    <div class="add-form-grid">
+      <!-- Sol: Fotoğraf -->
+      <div>
+        <div class="form-panel">
+          <div class="panel-title">Ürün Fotoğrafları</div>
+          <div class="photo-upload-area">
+            <div class="upload-icon-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#D4537E" stroke-width="2">
+                <polyline points="16 16 12 12 8 16"/>
+                <line x1="12" y1="12" x2="12" y2="21"/>
+                <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>
+              </svg>
+            </div>
+            <div class="upload-main">Fotoğraf yükle</div>
+            <div class="upload-sub">PNG, JPG — maksimum 5 MB</div>
+          </div>
+          <div class="thumb-row">
+            <div class="thumb-add">+</div>
+            <div class="thumb-add">+</div>
+            <div class="thumb-add">+</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sağ: Form -->
+      <div>
+        <div class="form-panel">
+          <div class="panel-title">Ürün Bilgileri</div>
+
+          <div class="form-field">
+            <label>Ürün Adı</label>
+            <input type="text" placeholder="Ürün adını girin">
+          </div>
+
+          <div class="form-field">
+            <label>Açıklama</label>
+            <textarea placeholder="Ürününüzü kısaca tanıtın..."></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label>Fiyat (₺)</label>
+              <input type="number" placeholder="0.00">
+            </div>
+            <div class="form-field">
+              <label>Stok Adedi</label>
+              <input type="number" placeholder="1">
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label>Kategori</label>
+            <div class="cat-grid">
+              <button class="cat-btn selected" onclick="selectCat(this)">
+                <div class="cat-dot" style="background:#D4537E"></div>El Sanatları
+              </button>
+              <button class="cat-btn" onclick="selectCat(this)">
+                <div class="cat-dot" style="background:#7F77DD"></div>Tekstil
+              </button>
+              <button class="cat-btn" onclick="selectCat(this)">
+                <div class="cat-dot" style="background:#1D9E75"></div>Gıda & Organik
+              </button>
+              <button class="cat-btn" onclick="selectCat(this)">
+                <div class="cat-dot" style="background:#BA7517"></div>Takı & Aksesuar
+              </button>
+              <button class="cat-btn" onclick="selectCat(this)">
+                <div class="cat-dot" style="background:#5DCAA5"></div>Kozmetik
+              </button>
+              <button class="cat-btn" onclick="selectCat(this)">
+                <div class="cat-dot" style="background:#AFA9EC"></div>Ev Dekor
+              </button>
+            </div>
+          </div>
+
+          <div class="submit-row">
+            <button class="btn-draft">Taslak Kaydet</button>
+            <button class="btn-submit" onclick="showScreen('profile')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Ürünü Yayınla
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showScreen(name) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach((t, i) => {
+      const names = ['login', 'profile', 'add-product'];
+      t.classList.toggle('active', names[i] === name);
+    });
+    document.getElementById('screen-' + name).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function switchFormTab(tab) {
+    document.getElementById('form-login').style.display = tab === 'login' ? 'block' : 'none';
+    document.getElementById('form-register').style.display = tab === 'register' ? 'block' : 'none';
+    document.getElementById('sw-login').classList.toggle('active', tab === 'login');
+    document.getElementById('sw-register').classList.toggle('active', tab === 'register');
+  }
+
+  function selectCat(btn) {
+    btn.closest('.cat-grid').querySelectorAll('.cat-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  }
+</script>
+</body>
+</html>
